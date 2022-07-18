@@ -1,8 +1,19 @@
-header{
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #cf60f1;
+    --secondary: rgb(79, 53, 225);
+}
+
+header {
     display: flex;
     justify-content: space-between;
 }
-.viewHS{
+
+.viewHS {
     border: none;
     background: none;
+    color: var(--primary);
 }
