@@ -2,30 +2,30 @@ var mainEl = document.querySelector("#quiz-content");
 var questionEl = document.querySelector("#title-question");
 var guideEl = document.querySelector("#guide");
 var startBtnEl = document.querySelector("#start-btn");
-
 var optionEl = document.querySelector("#choice-list");
+var decisionEl = document.querySelector("#decision");
+
+//Create Counter for options
 var optionCounter = 1;
 
 //Create HashMap
 var question = ["Commonly used data types DO NOT Include:",
-"The condition in an if/else statement is enclosed with ___."]
-;
+    "The condition in an if/else statement is enclosed with ___."]
+    ;
 var answer = [1, 2];
 
-var options = [["strings", "booleans", "alerts", "numbers"], 
+var options = [["strings", "booleans", "alerts", "numbers"],
 ["quotes", "curly brackets", "parenthesis", "square brackets"]
 ];
 
 
-function changeQuestion(){
+function changeQuestion() {
     //Setup object
-
     var content = {
         question: question[0],
         options: options[0],
         answer: answer[0]
     };
-
 
     // set new question
     questionEl.textContent = content.question;
@@ -33,9 +33,9 @@ function changeQuestion(){
     startBtnEl.style.display = 'none';
     guideEl.style.display = 'none';
 
-    for (var i = 0; i < content.options.length; i++){
+    for (var i = 0; i < content.options.length; i++) {
         var item = document.createElement("li");
-        item.textContent = optionCounter + ". "+ content.options[i];
+        item.textContent = optionCounter + ". " + content.options[i];
         item.setAttribute("id", optionCounter);
         optionEl.appendChild(item);
         optionCounter++;
@@ -44,11 +44,14 @@ function changeQuestion(){
     }
 }
 function myFunction() {
+
     var n = 3;
     str = this.textContent.slice(n);//cut off first 3
-    
-    if (str === "strings"){
+
+    if (str === "strings") {
         console.log("You clicked the correct answer");
+        decisionEl.style.display = 'block';
+        decisionEl.textContent = "Wrong!";
     }
 }
 

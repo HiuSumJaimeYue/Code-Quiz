@@ -7,6 +7,7 @@
     --primary: #cf60f1;
     --secondary: rgb(27, 5, 152);
     --tertiary: white;
+    --grey: rgb(168, 168, 168);
     --border-radius: .3rem;
 }
 
@@ -36,9 +37,6 @@ header {
     padding: 9px;
 }
 
-.btn:hover {
-    background-color: var(--primary);
-}
 .btn-2 {
     color: var(--tertiary);
     background-color: var(--secondary);
@@ -50,9 +48,21 @@ header {
     padding: 9px;
     text-align: left;
     width: 200px;
-    margin-bottom: 3px;  
+    margin-bottom: 3px;
 }
 
+.btn:hover,
 .btn-2:hover {
     background-color: var(--primary);
+}
+
+.bottom {
+    text-align: left;
+    margin-left: 40px;
+    border-top: 3px solid var(--grey);
+    color: var(--grey);
+    padding-top: 10px;
+    font-style: italic;
+    font-size: 18px;
+    display: none;
 }
