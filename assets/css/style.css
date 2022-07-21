@@ -39,3 +39,19 @@ header {
 .btn:hover {
     background-color: var(--primary);
 }
+.btn-2 {
+    color: var(--tertiary);
+    background-color: var(--secondary);
+    border: none;
+    outline: none;
+    font-size: 1.3rem;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    padding: 9px;
+    text-align: left;
+    width: 200px;
+}
+
+.btn-2:hover {
+    background-color: var(--primary);
+}
