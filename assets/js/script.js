@@ -12,6 +12,7 @@ var optionCounter = 1;
 var question = ["Commonly used data types DO NOT Include:",
     "The condition in an if/else statement is enclosed with ___."]
     ;
+//need to change to array of strings
 var answer = [1, 2];
 
 var options = [["strings", "booleans", "alerts", "numbers"],
@@ -40,19 +41,27 @@ function changeQuestion() {
         optionEl.appendChild(item);
         optionCounter++;
         item.className = "btn-2";
-        item.addEventListener("click", myFunction);
+        item.addEventListener("click", decisionAndNext);
     }
 }
-function myFunction() {
+function decisionAndNext() {
 
     var n = 3;
     str = this.textContent.slice(n);//cut off first 3
-
-    if (str === "strings") {
-        console.log("You clicked the correct answer");
-        decisionEl.style.display = 'block';
+    decisionEl.style.display = 'block';
+    if (str === "strings") {        
+        decisionEl.textContent = "Correct!";
+    }
+    else{
         decisionEl.textContent = "Wrong!";
     }
+    setTimeout(() => {
+        //removes element from DOM
+        decisionEl.style.display = 'none';
+    }, 1000); //time in milliseconds
+
+    //Go to the next question
+    //changeQuestion()
 }
 
 startBtnEl.addEventListener("click", changeQuestion);
