@@ -1,9 +1,11 @@
-var mainEl = document.querySelector("#quiz-content");
-var questionEl = document.querySelector("#title-question");
+var mainEl = document.querySelector("#quiz");
+var titleEl = document.querySelector("#title-question");
+var questionEl = document.querySelector("#question");
 var guideEl = document.querySelector("#guide");
 var startBtnEl = document.querySelector("#start-btn");
 var optionEl = document.querySelector("#choice-list");
 var decisionEl = document.querySelector("#decision");
+var endEl = document.querySelector("#end-container");
 
 //Create counter for questions
 var currentQuestionNum = 0;
@@ -28,6 +30,7 @@ var options = [["strings", "booleans", "alerts", "numbers"],
 
 function beginQuestion() {
     changeQuestion(0);
+    mainEl.className = "quiz-content-2";
 }
 
 function changeQuestion(questionNum) {
@@ -40,7 +43,10 @@ function changeQuestion(questionNum) {
 
     // set new question
     questionEl.textContent = content.question;
-    questionEl.setAttribute("style", "display: inline-block; text-align: left;");
+    questionEl.setAttribute("style", 
+    "display: inline-block; text-align: left;"+
+    "width: 450px;");
+    titleEl.style.display = 'none';
     startBtnEl.style.display = 'none';
     guideEl.style.display = 'none';
     optionEl.innerHTML = "";
@@ -53,7 +59,7 @@ function changeQuestion(questionNum) {
         item.textContent = optionCounter + ". " + content.options[i];
         optionEl.appendChild(item);
         optionCounter++;
-        item.className = "btn-2";
+        item.className = "options";
         item.addEventListener("click", decisionAndNext);
     }
 }
@@ -61,7 +67,7 @@ function changeQuestion(questionNum) {
 function decisionAndNext() {
     var n = 3;
     str = this.textContent.slice(n);//cut off first 3
-    decisionEl.style.display = 'block';
+    decisionEl.style.display = 'flex';
     if (str === answer[currentQuestionNum]) {
         decisionEl.textContent = "Correct!";
     }
@@ -73,14 +79,41 @@ function decisionAndNext() {
         //removes element from DOM
         decisionEl.style.display = 'none';
         currentQuestionNum++;
+
+        if (currentQuestionNum > question.length - 1){
+            doneQuestions();
+        }else{
         //Go to the next question
         changeQuestion(currentQuestionNum)
-    }, 500); //time in milliseconds
+        }
+    }, 200); //time in milliseconds
+
+
 }
 
-//Ran out off time, cannot finish the quiz
-// function doneQuestions(){
+//Timer control
+// setInterval(myTimer, 1000);
+// setInterval(addTime, 1000);
+var time = 0;
+// function myTimer() {
+//   	document.getElementById("demo").innerHTML = time;
 
 // }
+// function addTime(){
+// 	time++;
+// }
+
+//Ran out off time, cannot finish the quiz
+function doneQuestions(){
+    mainEl.style.width = '80%';
+    questionEl.textContent = "All done!";
+    optionEl.innerHTML = "";
+    guideEl.style.display = 'block';
+    guideEl.textContent = "Your final score is "+ time +".";
+    endEl.style.display = 'flex';
+    
+    
+
+}
 
 startBtnEl.addEventListener("click", beginQuestion);

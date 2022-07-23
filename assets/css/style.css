@@ -26,6 +26,13 @@ header {
     text-align: center;
 }
 
+.quiz-content-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .btn {
     color: var(--tertiary);
     background-color: var(--secondary);
@@ -37,7 +44,7 @@ header {
     padding: 9px;
 }
 
-.btn-2 {
+.options {
     color: var(--tertiary);
     background-color: var(--secondary);
     border: none;
@@ -52,11 +59,21 @@ header {
 }
 
 .btn:hover,
-.btn-2:hover {
+.options:hover,
+.submit-btn:hover {
     background-color: var(--primary);
 }
 
-.bottom {
+.optionAndAns{
+    margin-left: -42px;
+}
+#choice-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.decision-block {
+    display: none;
     text-align: left;
     margin-left: 40px;
     border-top: 3px solid var(--grey);
@@ -64,5 +81,46 @@ header {
     padding-top: 10px;
     font-style: italic;
     font-size: 18px;
-    display: none;
+    margin-right: 42px;
 }
+
+.end {
+    justify-content: center;
+    align-items: center;
+    display: none;
+    margin-left: 300px;
+    /*in tablet ->250px*/
+}
+
+.end-header {
+    display: flex;
+    margin-right: 10px;
+    font-weight: normal;
+    display: inline-block;
+    text-align: left;
+}
+
+.end-form {
+    display: flex;
+    align-items: center;
+}
+
+.form-input {
+    margin: 20px 5px;
+    font-size: 1.2rem;
+    border-radius: var(--border-radius);
+}
+
+.submit-btn {
+    color: var(--tertiary);
+    background-color: var(--secondary);
+    border: none;
+    outline: none;
+    font-size: 1.3rem;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    margin-bottom: 3px;
+    height: 35px;
+}
+
+/* MEDIA QUERY */

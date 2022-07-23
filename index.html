@@ -15,17 +15,35 @@
         <p class="time">Time: 0</p>
     </header>
 
-    <main class="quiz-content">
-        <h1 id="title-question">Coding Quiz Challenge</h1>
-        <p id="guide">Try to answer the following code-related questions
-            within the time limit. Keep in mind that
-            incorrect answers will penalize your score/time
-            by ten seconds!
-        </p>
-        <button class="btn" id="start-btn">Start Quiz</button>
-        <ol id="choice-list"></ol>
-        <p id="decision" class="bottom"></p>
+    <main id="quiz" class="quiz-content">
+        <div>
+            <h1 id="title-question">Coding Quiz Challenge</h1>
+            <p id="guide">Try to answer the following code-related questions
+                within the time limit. Keep in mind that
+                incorrect answers will penalize your score/time
+                by ten seconds!
+            </p>
+            <button class="btn" id="start-btn">Start Quiz</button>
+        </div>
 
+        <div>
+            <h1 id="question"></h1>
+            <div class="optionAndAns">
+                <ol id="choice-list"></ol>
+                <p id="decision" class="decision-block"></p>
+            </div>
+        </div>
+
+
+        <div id="end-container" class="end">
+            <h3 class="end-header">Enter initals: </h2>
+                <form id="artist-form" class="end-form">
+                    <!-- <label class="form-label" for="artist"></label> -->
+                    <input name="username" id="name" type="text" autofocus="true" class="form-input" />
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+
+        </div>
     </main>
 
     <script src="./assets/js/script.js"></script>
