@@ -7,6 +7,7 @@ var startBtnEl = document.querySelector("#start-btn");
 var optionEl = document.querySelector("#choice-list");
 var decisionEl = document.querySelector("#decision");
 
+var finalEl = document.querySelector("#final");
 var doneEl = document.querySelector("#done");
 var finalScoreEl = document.querySelector("#final-score");
 var endEl = document.querySelector("#form-container");
@@ -94,7 +95,6 @@ function decisionAndNext() {
         }
     }, 200); //time in milliseconds
 
-
 }
 
 //Timer control
@@ -111,17 +111,17 @@ var time = 0;
 
 //Ran out off time, cannot finish the quiz
 function doneQuestions() {
+
     doneEl.textContent = "All done!";
     questionEl.innerHTML = "";
     optionEl.innerHTML = "";
     finalScoreEl.style.display = 'block';
     finalScoreEl.textContent = "Your final score is " + time + ".";
     endEl.style.display = 'flex';
-
 }
 
 //get value from input element
-var formSubmit = function (event) {
+function formSubmit(event) {
   event.preventDefault();
   // console.log(event);
   var name = nameInputEl.value.trim();
@@ -129,12 +129,20 @@ var formSubmit = function (event) {
   if (name) {
     //Add artist(search term) to localStorage
     localStorage.setItem("Name", name);
-    console.log("name");
   }else{
     localStorage.setItem("Name", "No name");
-    console.log("noname");
   }
-  console.log("form");
+  doneEl.style.display = 'none';
+  finalScoreEl.style.display = 'none';
+  endEl.style.display = 'none';
+  showHighscores();
 }
+
+function showHighscores(){
+    console.log("highscore");
+    window.location.href="highscores.html"
+}
+
+
 startBtnEl.addEventListener("click", beginQuestion);
 nameFormEl.addEventListener("submit", formSubmit);

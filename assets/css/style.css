@@ -126,4 +126,28 @@ header {
     height: 33px;
 }
 
+/*highscores*/
+.high-scores {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hs-buttons {
+    display: flex;
+}
+
+.hs-btn {
+    color: var(--tertiary);
+    background-color: var(--secondary);
+    border: none;
+    outline: none;
+    font-size: 1.3rem;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    padding: 5px;
+    margin-right: 5px;
+}
+
 /* MEDIA QUERY */
