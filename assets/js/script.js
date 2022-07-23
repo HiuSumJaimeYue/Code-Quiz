@@ -10,6 +10,8 @@ var decisionEl = document.querySelector("#decision");
 var doneEl = document.querySelector("#done");
 var finalScoreEl = document.querySelector("#final-score");
 var endEl = document.querySelector("#form-container");
+var nameFormEl = document.querySelector("#name-form");
+var nameInputEl = document.querySelector("#name");
 
 //Create counter for questions
 var currentQuestionNum = 0;
@@ -118,4 +120,21 @@ function doneQuestions() {
 
 }
 
+//get value from input element
+var formSubmit = function (event) {
+  event.preventDefault();
+  // console.log(event);
+  var name = nameInputEl.value.trim();
+
+  if (name) {
+    //Add artist(search term) to localStorage
+    localStorage.setItem("Name", name);
+    console.log("name");
+  }else{
+    localStorage.setItem("Name", "No name");
+    console.log("noname");
+  }
+  console.log("form");
+}
 startBtnEl.addEventListener("click", beginQuestion);
+nameFormEl.addEventListener("submit", formSubmit);
