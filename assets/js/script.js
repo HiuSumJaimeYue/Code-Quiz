@@ -1,14 +1,16 @@
 var mainEl = document.querySelector("#quiz");
+var frontPageEl = document.querySelector("#front-page");
 var titleEl = document.querySelector("#title-question");
 var questionEl = document.querySelector("#question");
 var guideEl = document.querySelector("#guide");
 var startBtnEl = document.querySelector("#start-btn");
 var viewHSbtnEl = document.querySelector("#viewHSbtn");
 
+var questionPageEl = document.querySelector("#question-page");
 var optionEl = document.querySelector("#choice-list");
 var decisionEl = document.querySelector("#decision");
 
-var finalEl = document.querySelector("#final");
+var donePageEl = document.querySelector("#done-page");
 var doneEl = document.querySelector("#done");
 var finalScoreEl = document.querySelector("#final-score");
 var endEl = document.querySelector("#form-container");
@@ -128,35 +130,29 @@ function doneQuestions() {
 
 //get value from input element
 function formSubmit(event) {
-  event.preventDefault();
-  // console.log(event);
-  var name = nameInputEl.value.trim();
+    event.preventDefault();
+    // console.log(event);
+    var name = nameInputEl.value.trim();
 
-  if (name) {
-    //Add artist(search term) to localStorage
-    //check time score
-    localStorage.setItem("Name", name);
-  }else{
-    //check time score -> examples
-    localStorage.setItem("Name", "No name");
-  }
+    if (name) {
+        //Add artist(search term) to localStorage
+        //check time score
+        localStorage.setItem("Name", name);
+    } else {
+        //check time score -> examples
+        localStorage.setItem("Name", "No name");
+    }
 
-  showHighscores();
+    showHighscores();
 }
 
-function showHighscores(){
+function showHighscores() {
     //clear out everything
-    titleEl.style.display = 'none';
-    startBtnEl.style.display = 'none';
-    guideEl.style.display = 'none';
-    questionEl.innerHTML = "";
-    optionEl.innerHTML = "";
-    doneEl.style.display = 'none';
-    finalScoreEl.style.display = 'none';
-    endEl.style.display = 'none';
+    frontPageEl.style.display = 'none';
+    questionPageEl.style.display = 'none';
+    donePageEl.style.display = 'none';
 
     highscoreEl.style.display = 'flex';
-    console.log("highscore");
     // window.location.href="highscores.html";
     var item = document.createElement("li");
     var name = localStorage.getItem("Name");
