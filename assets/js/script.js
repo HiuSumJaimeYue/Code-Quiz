@@ -3,9 +3,13 @@ var titleEl = document.querySelector("#title-question");
 var questionEl = document.querySelector("#question");
 var guideEl = document.querySelector("#guide");
 var startBtnEl = document.querySelector("#start-btn");
+
 var optionEl = document.querySelector("#choice-list");
 var decisionEl = document.querySelector("#decision");
-var endEl = document.querySelector("#end-container");
+
+var doneEl = document.querySelector("#done");
+var finalScoreEl = document.querySelector("#final-score");
+var endEl = document.querySelector("#form-container");
 
 //Create counter for questions
 var currentQuestionNum = 0;
@@ -43,9 +47,9 @@ function changeQuestion(questionNum) {
 
     // set new question
     questionEl.textContent = content.question;
-    questionEl.setAttribute("style", 
-    "display: inline-block; text-align: left;"+
-    "width: 450px;");
+    questionEl.setAttribute("style",
+        "display: inline-block; text-align: left;" +
+        "width: 450px;");
     titleEl.style.display = 'none';
     startBtnEl.style.display = 'none';
     guideEl.style.display = 'none';
@@ -80,11 +84,11 @@ function decisionAndNext() {
         decisionEl.style.display = 'none';
         currentQuestionNum++;
 
-        if (currentQuestionNum > question.length - 1){
+        if (currentQuestionNum > question.length - 1) {
             doneQuestions();
-        }else{
-        //Go to the next question
-        changeQuestion(currentQuestionNum)
+        } else {
+            //Go to the next question
+            changeQuestion(currentQuestionNum)
         }
     }, 200); //time in milliseconds
 
@@ -104,15 +108,13 @@ var time = 0;
 // }
 
 //Ran out off time, cannot finish the quiz
-function doneQuestions(){
-    mainEl.style.width = '80%';
-    questionEl.textContent = "All done!";
+function doneQuestions() {
+    doneEl.textContent = "All done!";
+    questionEl.innerHTML = "";
     optionEl.innerHTML = "";
-    guideEl.style.display = 'block';
-    guideEl.textContent = "Your final score is "+ time +".";
+    finalScoreEl.style.display = 'block';
+    finalScoreEl.textContent = "Your final score is " + time + ".";
     endEl.style.display = 'flex';
-    
-    
 
 }
 

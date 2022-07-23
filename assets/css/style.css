@@ -64,9 +64,10 @@ header {
     background-color: var(--primary);
 }
 
-.optionAndAns{
+.optionAndAns {
     margin-left: -42px;
 }
+
 #choice-list {
     display: flex;
     flex-direction: column;
@@ -84,12 +85,14 @@ header {
     margin-right: 42px;
 }
 
-.end {
+#final-score {
+    display: none;
+}
+
+.end-input-form {
     justify-content: center;
     align-items: center;
     display: none;
-    margin-left: 300px;
-    /*in tablet ->250px*/
 }
 
 .end-header {
