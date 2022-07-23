@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <button class="viewHS-btn">View high scores</button>
+        <button id="viewHSbtn" class="viewHS-btn">View high scores</button>
         <p class="time">Time: 0</p>
     </header>
 
@@ -49,8 +49,20 @@
             </div>
         </div>
 
-        <div>
-
+        <div id="highscores" class="high-scores">
+            <h1 id="vhs">View High scores</h1>
+            <ol id="rankings" class="hs-rankings"></ol>
+            <div class="hs-buttons">
+                <form action="./index.html">
+                    <button class="hs-btn">Go back</button>
+                </form>
+                <!-- action="./highscores.html" or same as viewHSbtn 
+                    what is this suppose to do? -->
+                <form>  
+                    <button class="hs-btn">View highscores</button>
+                </form>
+            </div>
+    
         </div>
 
     </main>

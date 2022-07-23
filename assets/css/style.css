@@ -128,10 +128,15 @@ header {
 
 /*highscores*/
 .high-scores {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.hs-rankings {
+    background-color: var(--grey);
+    text-align: left;
 }
 
 .hs-buttons {

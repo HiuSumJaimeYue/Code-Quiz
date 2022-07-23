@@ -3,6 +3,7 @@ var titleEl = document.querySelector("#title-question");
 var questionEl = document.querySelector("#question");
 var guideEl = document.querySelector("#guide");
 var startBtnEl = document.querySelector("#start-btn");
+var viewHSbtnEl = document.querySelector("#viewHSbtn");
 
 var optionEl = document.querySelector("#choice-list");
 var decisionEl = document.querySelector("#decision");
@@ -13,6 +14,11 @@ var finalScoreEl = document.querySelector("#final-score");
 var endEl = document.querySelector("#form-container");
 var nameFormEl = document.querySelector("#name-form");
 var nameInputEl = document.querySelector("#name");
+
+//highscores
+var highscoreEl = document.querySelector("#highscores");
+var vhsEl = document.querySelector("#vhs");
+var hsRankingsEl = document.querySelector("#rankings");
 
 //Create counter for questions
 var currentQuestionNum = 0;
@@ -128,21 +134,40 @@ function formSubmit(event) {
 
   if (name) {
     //Add artist(search term) to localStorage
+    //check time score
     localStorage.setItem("Name", name);
   }else{
+    //check time score -> examples
     localStorage.setItem("Name", "No name");
   }
-  doneEl.style.display = 'none';
-  finalScoreEl.style.display = 'none';
-  endEl.style.display = 'none';
+
   showHighscores();
 }
 
 function showHighscores(){
+    //clear out everything
+    titleEl.style.display = 'none';
+    startBtnEl.style.display = 'none';
+    guideEl.style.display = 'none';
+    questionEl.innerHTML = "";
+    optionEl.innerHTML = "";
+    doneEl.style.display = 'none';
+    finalScoreEl.style.display = 'none';
+    endEl.style.display = 'none';
+
+    highscoreEl.style.display = 'flex';
     console.log("highscore");
-    window.location.href="highscores.html"
+    // window.location.href="highscores.html";
+    var item = document.createElement("li");
+    var name = localStorage.getItem("Name");
+    var score = 0;//localStorage.getItem("Name");
+    item.textContent = name + " ----- " + score;
+    hsRankingsEl.appendChild(item);
+
+    //case for no record check if localStorage has nth maybe .length low%
 }
 
 
 startBtnEl.addEventListener("click", beginQuestion);
 nameFormEl.addEventListener("submit", formSubmit);
+viewHSbtnEl.addEventListener("click", showHighscores);
