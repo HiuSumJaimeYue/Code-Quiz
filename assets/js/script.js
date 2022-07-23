@@ -5,27 +5,30 @@ var startBtnEl = document.querySelector("#start-btn");
 var optionEl = document.querySelector("#choice-list");
 var decisionEl = document.querySelector("#decision");
 
-//Create Counter for options
-var optionCounter = 1;
+//Create counter for questions
+var currentQuestionNum = 0;
 
 //Create HashMap
 var question = ["Commonly used data types DO NOT Include:",
     "The condition in an if/else statement is enclosed with ___."]
     ;
 //need to change to array of strings
-var answer = [1, 2];
+var answer = ["strings", "quotes"];
 
 var options = [["strings", "booleans", "alerts", "numbers"],
 ["quotes", "curly brackets", "parenthesis", "square brackets"]
 ];
 
+function beginQuestion(){
+    changeQuestion(0);
+}
 
-function changeQuestion() {
+function changeQuestion(questionNum) {
     //Setup object
     var content = {
-        question: question[0],
-        options: options[0],
-        answer: answer[0]
+        question: question[questionNum],
+        options: options[questionNum],
+        answer: answer[questionNum]
     };
 
     // set new question
@@ -33,6 +36,10 @@ function changeQuestion() {
     questionEl.setAttribute("style", "display: inline-block; text-align: left;");
     startBtnEl.style.display = 'none';
     guideEl.style.display = 'none';
+    optionEl.innerHTML = "";
+
+    //Create Counter for options
+    var optionCounter = 1;
 
     for (var i = 0; i < content.options.length; i++) {
         var item = document.createElement("li");
@@ -44,26 +51,24 @@ function changeQuestion() {
         item.addEventListener("click", decisionAndNext);
     }
 }
-function decisionAndNext() {
 
+function decisionAndNext() {
     var n = 3;
     str = this.textContent.slice(n);//cut off first 3
     decisionEl.style.display = 'block';
-    if (str === "strings") {        
+    if (str === answer[currentQuestionNum]) {
         decisionEl.textContent = "Correct!";
     }
-    else{
+    else {
         decisionEl.textContent = "Wrong!";
     }
     setTimeout(() => {
         //removes element from DOM
         decisionEl.style.display = 'none';
+        currentQuestionNum++;
+        //Go to the next question
+        changeQuestion(currentQuestionNum)
     }, 1000); //time in milliseconds
-
-    //Go to the next question
-    //changeQuestion()
 }
 
-startBtnEl.addEventListener("click", changeQuestion);
-
-
+startBtnEl.addEventListener("click", beginQuestion);
