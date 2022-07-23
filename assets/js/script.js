@@ -17,13 +17,13 @@ var question = ["Commonly used data types DO NOT Include:",
 ];
 
 //need to change to array of strings
-var answer = ["strings", "quotes", "numbers and strings", "commas", "JavaScript"];
+var answer = ["alerts", "parenthesis", "all of the above", "quotes", "console.log"];
 
 var options = [["strings", "booleans", "alerts", "numbers"],
 ["quotes", "curly brackets", "parenthesis", "square brackets"],
 ["numbers and strings", "other arrays", "booleans", "all of the above"],
 ["commas", "curly brackets", "quotes", "parenthesis"],
-["JavaScript", "terminal/bash", "for loops", "console log"]
+["JavaScript", "terminal / bash", "for loops", "console.log"]
 ];
 
 function beginQuestion() {
@@ -51,7 +51,6 @@ function changeQuestion(questionNum) {
     for (var i = 0; i < content.options.length; i++) {
         var item = document.createElement("li");
         item.textContent = optionCounter + ". " + content.options[i];
-        item.setAttribute("id", optionCounter);
         optionEl.appendChild(item);
         optionCounter++;
         item.className = "btn-2";
@@ -68,6 +67,7 @@ function decisionAndNext() {
     }
     else {
         decisionEl.textContent = "Wrong!";
+        //MINUS TIME -10
     }
     setTimeout(() => {
         //removes element from DOM
@@ -77,5 +77,10 @@ function decisionAndNext() {
         changeQuestion(currentQuestionNum)
     }, 500); //time in milliseconds
 }
+
+//Ran out off time, cannot finish the quiz
+// function doneQuestions(){
+
+// }
 
 startBtnEl.addEventListener("click", beginQuestion);
