@@ -55,7 +55,7 @@ var timerControl;
 function minusTime() {
     if (time < 1) {
         //so no one will get a score less than 0
-        // even got multiple questions wrong
+        // even if getting multiple questions wrong
         time = 0;
         doneQuestions();
     } else {
