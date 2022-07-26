@@ -152,8 +152,8 @@ function formSubmit(event) {
     console.log(rankingList);
     rankingList.push(recordObj);
 
-    //sort by highest to lowest score
-    rankingList.sort(function(a, b){return b.score - a.score});
+    //sort by highest to lowest score before saved into localStorage
+    rankingList.sort(function (a, b) { return b.score - a.score });
 
     //save into localStorage
     localStorage.setItem("Highscores", JSON.stringify(rankingList));
