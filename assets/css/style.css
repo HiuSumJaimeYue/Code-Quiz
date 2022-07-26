@@ -8,18 +8,21 @@
     --secondary: rgb(27, 5, 152);
     --tertiary: white;
     --grey: rgb(168, 168, 168);
+    --hsBackground: #e9b5fa;
     --border-radius: .3rem;
 }
 
 header {
     display: flex;
     justify-content: space-between;
+    font-size: 20px;
 }
 
 .viewHS-btn {
     border: none;
     background: none;
-    color: var(--primary);
+    color: var(--secondary);
+    font-size: 20px;
 }
 
 .quiz-content {
@@ -135,8 +138,30 @@ header {
 }
 
 .hs-rankings {
-    background-color: var(--grey);
     text-align: left;
+    width: 250px;
+    list-style: none;
+    counter-reset: li;
+}
+
+.hs-rankings li::before {
+    content: counter(li) ".";
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.hs-rankings li {
+    counter-increment: li;
+    margin-bottom: 4px;
+}
+
+.hs-ranking-odd {
+    background: var(--hsBackground);
+}
+
+.hs-ranking-odd::before {
+    background: var(--hsBackground);
 }
 
 .hs-buttons {
@@ -148,7 +173,7 @@ header {
     background-color: var(--secondary);
     border: none;
     outline: none;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     text-decoration: none;
     border-radius: var(--border-radius);
     padding: 5px;

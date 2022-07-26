@@ -19,11 +19,14 @@ var nameInputEl = document.querySelector("#name");
 
 //highscores
 var highscoreEl = document.querySelector("#highscores");
-var vhsEl = document.querySelector("#vhs");
 var hsRankingsEl = document.querySelector("#rankings");
+var clearHSbtnEl = document.querySelector("#clear-hs-btn");
 
 //Create counter for questions
 var currentQuestionNum = 0;
+
+//ranking list
+var rankingList = [];
 
 //Create HashMap
 var question = ["Commonly used data types DO NOT Include:",
@@ -124,6 +127,9 @@ function doneQuestions() {
     questionEl.innerHTML = "";
     optionEl.innerHTML = "";
     finalScoreEl.style.display = 'block';
+    //save time -> score before clearing
+
+
     finalScoreEl.textContent = "Your final score is " + time + ".";
     endEl.style.display = 'flex';
 }
@@ -132,17 +138,21 @@ function doneQuestions() {
 function formSubmit(event) {
     event.preventDefault();
     // console.log(event);
-    var name = nameInputEl.value.trim();
-
-    if (name) {
-        //Add artist(search term) to localStorage
-        //check time score
-        localStorage.setItem("Name", name);
-    } else {
-        //check time score -> examples
-        localStorage.setItem("Name", "No name");
+    var nameInput = nameInputEl.value.trim();
+    var timescore = 50;
+    if (!nameInput) {
+        nameInput = "No name";
     }
 
+    var recordObj = {
+        name: nameInput,
+        score: timescore
+    };
+    console.log(rankingList);
+    rankingList.push(recordObj);
+
+    //save into localStorage
+    localStorage.setItem("Highscores", JSON.stringify(rankingList));
     showHighscores();
 }
 
@@ -153,17 +163,61 @@ function showHighscores() {
     donePageEl.style.display = 'none';
 
     highscoreEl.style.display = 'flex';
-    // window.location.href="highscores.html";
-    var item = document.createElement("li");
-    var name = localStorage.getItem("Name");
-    var score = 0;//localStorage.getItem("Name");
-    item.textContent = name + " ----- " + score;
-    hsRankingsEl.appendChild(item);
+
+    //need to compare score before
+
+    //Get saved high scores
+    var savedhighscores = localStorage.getItem("Highscores");
+    console.log(savedhighscores);
+    // if there are no records, return
+    if (!savedhighscores) {
+        return false;
+    }
+    // parse into array of objects
+    var parsedHighscores = JSON.parse(savedhighscores);
+
+    for (var i = 0; i < parsedHighscores.length; i++) {
+        var item = document.createElement("li");
+        var name = parsedHighscores[i].name;
+        var score = parsedHighscores[i].score;
+        item.textContent = name + " ----- " + score;
+        if (i%2 === 0) {
+            item.className = "hs-ranking-odd";
+        }
+        hsRankingsEl.appendChild(item);
+    }
+
+
 
     //case for no record check if localStorage has nth maybe .length low%
 }
 
+function loadHighscores() {
+    console.log(rankingList);
+    var savedhighscores = localStorage.getItem("Highscores");
+    console.log(savedhighscores);
+    // if there are no records, return
+    if (!savedhighscores) {
+        return false;
+    }
+    // parse into array of objects
+    var parsedHighscores = JSON.parse(savedhighscores);
+
+    for (var i = 0; i < parsedHighscores.length; i++) {
+        console.log(parsedHighscores[i]);
+        rankingList.push(parsedHighscores[i]);
+
+    }
+    console.log(rankingList);
+}
+
+function clearHighscores() {
+    console.log("Hi");
+}
 
 startBtnEl.addEventListener("click", beginQuestion);
 nameFormEl.addEventListener("submit", formSubmit);
 viewHSbtnEl.addEventListener("click", showHighscores);
+clearHSbtnEl.addEventListener("click", clearHighscores);
+
+loadHighscores();
