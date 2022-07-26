@@ -49,16 +49,17 @@ var options = [["strings", "booleans", "alerts", "numbers"],
 ];
 
 //Timer control
-var time = 10;
+var time = 76; // it will not show 76 but start at 75
 var timerControl;
 
-function minusTime(){
-
-    if (time === 0) {
-        clearTimeout(timerControl);
-        alert("Time's Up!");
-    }else{
-    	time--;
+function minusTime() {
+    if (time < 1) {
+        //so no one will get a score less than 0
+        // even got multiple questions wrong
+        time = 0;
+        doneQuestions();
+    } else {
+        time--;
     }
     timerEl.textContent = "Time: " + time;
 }
@@ -110,6 +111,7 @@ function decisionAndNext() {
     else {
         decisionEl.textContent = "Wrong!";
         //MINUS TIME -10
+        time = time - 10;
     }
     //keep the elements there for the participants 
     //to see if they are right or wrong
@@ -131,8 +133,19 @@ function decisionAndNext() {
 //Ran out off time, cannot finish the quiz
 //Or finished quiz
 function doneQuestions() {
+    //stop the timer
     clearTimeout(timerControl);
-    doneEl.textContent = "All done!";
+
+    //just to make sure the time and score shows up the same
+    timerEl.textContent = "Time: " + time;
+
+    //the timer ends before finishing the quiz
+    if (currentQuestionNum != question.length) {
+        doneEl.textContent = "All done! Time is up!";
+    }
+    else {
+        doneEl.textContent = "All done!";
+    }
     questionEl.innerHTML = "";
     optionEl.innerHTML = "";
     finalScoreEl.style.display = 'block';
@@ -146,7 +159,7 @@ function doneQuestions() {
 //get value from input element for high scores
 function formSubmit(event) {
     event.preventDefault();
-    // console.log(event);
+
     var nameInput = nameInputEl.value.trim();
     var timescore = time;
     if (!nameInput) {
@@ -157,7 +170,7 @@ function formSubmit(event) {
         name: nameInput,
         score: timescore
     };
-    console.log(rankingList);
+
     rankingList.push(recordObj);
 
     //sort by highest to lowest score before saved into localStorage
@@ -181,7 +194,7 @@ function showHighscores() {
 
     //Get saved high scores
     var savedhighscores = localStorage.getItem("Highscores");
-    console.log(savedhighscores);
+
     // if there are no records, return
     if (!savedhighscores) {
         hsRankingsEl.innerHTML = "";
@@ -195,10 +208,6 @@ function showHighscores() {
     // parse into array of objects
     var parsedHighscores = JSON.parse(savedhighscores);
 
-    console.log(rankingList);
-    console.log(parsedHighscores);
-    console.log(rankingList.length);
-    console.log(parsedHighscores.length);
     for (var i = 0; i < parsedHighscores.length; i++) {
         var item = document.createElement("li");
         var name = parsedHighscores[i].name;
@@ -213,9 +222,8 @@ function showHighscores() {
 }
 
 function loadHighscores(event) {
-    console.log(rankingList);
     var savedhighscores = localStorage.getItem("Highscores");
-    console.log(savedhighscores);
+
     // if there are no records, return
     if (!savedhighscores) {
         return false;
@@ -224,11 +232,9 @@ function loadHighscores(event) {
     var parsedHighscores = JSON.parse(savedhighscores);
 
     for (var i = 0; i < parsedHighscores.length; i++) {
-        console.log(parsedHighscores[i]);
         rankingList.push(parsedHighscores[i]);
 
     }
-    console.log(rankingList);
 }
 
 function clearHighscores() {
