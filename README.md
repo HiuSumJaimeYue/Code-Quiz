@@ -11,7 +11,7 @@ When you are on the high score, you can see a ranking of everyone who participat
 
 Below are the links to the deployed application and this repository. Screenshots are shown after the links.
 
-Deployed application:        
+Deployed application: https://hiusumjaimeyue.github.io/Code-Quiz/        
 Github repository: https://github.com/HiuSumJaimeYue/Code-Quiz          
 
 Screenshots:     
