@@ -83,9 +83,6 @@ function changeQuestion(questionNum) {
 
     // set new question
     questionEl.textContent = content.question;
-    questionEl.setAttribute("style",
-        "display: inline-block; text-align: left;" +
-        "width: 450px;");
     titleEl.style.display = 'none';
     startBtnEl.style.display = 'none';
     guideEl.style.display = 'none';
@@ -129,7 +126,7 @@ function decisionAndNext() {
             //Go to the next question
             changeQuestion(currentQuestionNum)
         }
-    }, 200); //time in milliseconds
+    }, 300); //time in milliseconds
 
 }
 
@@ -140,20 +137,27 @@ function doneQuestions() {
     //stop the timer
     clearTimeout(timerControl);
 
+    //Clear out questions and options
+    questionPageEl.style.display = 'none';
+
+    //so no one will get a score less than 0
+    // even if getting multiple questions wrong
+    if (time < 1) {
+        time = 0;
+    }
+
     //just to make sure the time and score shows up the same
     timerEl.textContent = "Time: " + time;
 
     //the timer ends before finishing the quiz
-    if (currentQuestionNum != question.length) {
+    if (currentQuestionNum != question.length && time < 1) {
         doneEl.textContent = "All done! Time is up!";
     }
     else {
         doneEl.textContent = "All done!";
     }
-    questionEl.innerHTML = "";
-    optionEl.innerHTML = "";
-    finalScoreEl.style.display = 'block';
 
+    finalScoreEl.style.display = 'block';
     finalScoreEl.textContent = "Your final score is " + time + ".";
     endEl.style.display = 'flex';
 }
