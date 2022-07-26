@@ -25,10 +25,15 @@ header {
     font-size: 20px;
 }
 
+.viewHS-btn:hover {
+    color: var(--primary);
+}
+
 .quiz-content {
     text-align: center;
 }
 
+/* Question Page */
 .quiz-content-2 {
     display: flex;
     justify-content: center;
@@ -63,7 +68,8 @@ header {
 
 .btn:hover,
 .options:hover,
-.submit-btn:hover {
+.submit-btn:hover,
+.hs-btn:hover {
     background-color: var(--primary);
 }
 
@@ -88,6 +94,7 @@ header {
     margin-right: 42px;
 }
 
+/* Done/Finish Page */
 #final-score {
     display: none;
 }
@@ -136,9 +143,11 @@ header {
     justify-content: center;
     align-items: center;
 }
-.high-scores h1{
+
+.high-scores h1 {
     margin-right: 33px;
 }
+
 .hs-rankings {
     text-align: left;
     width: 250px;
@@ -147,10 +156,11 @@ header {
     margin-right: 15px;
 }
 
-.hs-ranking-none{
+.hs-ranking-none {
     font-size: 20px;
     margin-left: -15px;
 }
+
 .hs-rankings li::before {
     content: counter(li) ".";
     display: inline-block;

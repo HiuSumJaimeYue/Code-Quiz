@@ -110,7 +110,7 @@ function decisionAndNext() {
     }
     else {
         decisionEl.textContent = "Wrong!";
-        //MINUS TIME -10
+        //Answered wrong time - 10
         time = time - 10;
     }
     //keep the elements there for the participants 
@@ -190,8 +190,6 @@ function showHighscores() {
 
     highscoreEl.style.display = 'flex';
 
-    //need to compare score before
-
     //Get saved high scores
     var savedhighscores = localStorage.getItem("Highscores");
 
@@ -218,7 +216,6 @@ function showHighscores() {
         }
         hsRankingsEl.appendChild(item);
     }
-
 }
 
 function loadHighscores(event) {
