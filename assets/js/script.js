@@ -140,7 +140,7 @@ function formSubmit(event) {
     event.preventDefault();
     // console.log(event);
     var nameInput = nameInputEl.value.trim();
-    var timescore = 50;
+    var timescore = 45;
     if (!nameInput) {
         nameInput = "No name";
     }
@@ -151,6 +151,9 @@ function formSubmit(event) {
     };
     console.log(rankingList);
     rankingList.push(recordObj);
+
+    //sort by highest to lowest score
+    rankingList.sort(function(a, b){return b.score - a.score});
 
     //save into localStorage
     localStorage.setItem("Highscores", JSON.stringify(rankingList));
@@ -173,6 +176,12 @@ function showHighscores() {
     console.log(savedhighscores);
     // if there are no records, return
     if (!savedhighscores) {
+        hsRankingsEl.innerHTML = "";
+        clearHSbtnEl.disabled = true;
+        var noRecords = document.createElement("p");
+        noRecords.textContent = "No high scores recorded";
+        noRecords.className = "hs-ranking-none";
+        hsRankingsEl.appendChild(noRecords);
         return false;
     }
     // parse into array of objects
@@ -182,19 +191,17 @@ function showHighscores() {
     console.log(parsedHighscores);
     console.log(rankingList.length);
     console.log(parsedHighscores.length);
-    //prevent items being created after button clicked multiple times
-    // if (rankingList.length != parsedHighscores.length) {
-        for (var i = 0; i < parsedHighscores.length; i++) {
-            var item = document.createElement("li");
-            var name = parsedHighscores[i].name;
-            var score = parsedHighscores[i].score;
-            item.textContent = name + " ----- " + score;
-            if (i % 2 === 0) {
-                item.className = "hs-ranking-odd";
-            }
-            hsRankingsEl.appendChild(item);
+    for (var i = 0; i < parsedHighscores.length; i++) {
+        var item = document.createElement("li");
+        var name = parsedHighscores[i].name;
+        var score = parsedHighscores[i].score;
+        item.textContent = name + " ----- " + score;
+        if (i % 2 === 0) {
+            item.className = "hs-ranking-odd";
         }
-    // }
+        hsRankingsEl.appendChild(item);
+    }
+
 }
 
 function loadHighscores(event) {
@@ -217,7 +224,10 @@ function loadHighscores(event) {
 }
 
 function clearHighscores() {
-    console.log("Hi");
+    rankingList = [];
+    localStorage.removeItem("Highscores");
+    clearHSbtnEl.disabled = true;
+    showHighscores();
 }
 
 startBtnEl.addEventListener("click", beginQuestion);

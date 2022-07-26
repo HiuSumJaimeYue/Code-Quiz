@@ -147,6 +147,10 @@ header {
     margin-right: 15px;
 }
 
+.hs-ranking-none{
+    font-size: 20px;
+    margin-left: -15px;
+}
 .hs-rankings li::before {
     content: counter(li) ".";
     display: inline-block;
