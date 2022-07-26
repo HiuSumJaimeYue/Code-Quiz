@@ -7,7 +7,7 @@ On the top of the code quiz web application, there is a button that you can view
 
 When you clicked the Start Quiz button, the quiz will start and you will see the question and 4 multiple choices in the center of the page. When you finish the quiz or if you run out of time, the finish  page will be shown. You can put in your initials as a record for the high score page. If nothing was put into the input box, you name will be set as "No name". After submitting your initials, you can check on the high scores page where your name and score are.       
 
-When you are on the high scores pageS, you can see a ranking of everyone who participated in the test before. There are two buttons below the ranking, which are the Go back button and Clear Highscores button. The Go back button will bring you back to the starting quiz. The Clear Highscores button will clear the ranking. Therefore, the next time you finished the quiz, you will be on the top of the list.          
+When you are on the high scores page, you can see a ranking of everyone who participated in the test before. There are two buttons below the ranking, which are the Go back button and Clear Highscores button. The Go back button will bring you back to the starting quiz. The Clear Highscores button will clear the ranking. Therefore, the next time you finished the quiz, you will be on the top of the list.          
 
 Below are the links to the deployed application and this repository. Screenshots are shown after the links.
 
