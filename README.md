@@ -16,7 +16,7 @@ Github repository: https://github.com/HiuSumJaimeYue/Code-Quiz
 
 Screenshots:     
 Starting Page
-![Code Quiz Preview 1](https://github.com/HiuSumJaimeYue/Code-Quiz/blob/feature/timer/screenshots/codeQuizPreview1.jpg "Code Quiz Preview 1")           
+![Code Quiz Preview 1](https://github.com/HiuSumJaimeYue/Code-Quiz/blob/feature/timer/screenshots/codeQuizPreview1.jpg "Code Quiz Preview 1")            
 Question Page
 ![Code Quiz Preview 2](https://github.com/HiuSumJaimeYue/Code-Quiz/blob/feature/timer/screenshots/codeQuizPreview2.jpg "Code Quiz Preview 2")      
 Finish Page after finishing the quiz
