@@ -1,3 +1,4 @@
+var headerEl = document.querySelector("#header");
 var mainEl = document.querySelector("#quiz");
 var frontPageEl = document.querySelector("#front-page");
 var titleEl = document.querySelector("#title-question");
@@ -158,6 +159,7 @@ function formSubmit(event) {
 
 function showHighscores() {
     //clear out everything
+    headerEl.style.display = 'none';
     frontPageEl.style.display = 'none';
     questionPageEl.style.display = 'none';
     donePageEl.style.display = 'none';
@@ -176,23 +178,26 @@ function showHighscores() {
     // parse into array of objects
     var parsedHighscores = JSON.parse(savedhighscores);
 
-    for (var i = 0; i < parsedHighscores.length; i++) {
-        var item = document.createElement("li");
-        var name = parsedHighscores[i].name;
-        var score = parsedHighscores[i].score;
-        item.textContent = name + " ----- " + score;
-        if (i%2 === 0) {
-            item.className = "hs-ranking-odd";
+    console.log(rankingList);
+    console.log(parsedHighscores);
+    console.log(rankingList.length);
+    console.log(parsedHighscores.length);
+    //prevent items being created after button clicked multiple times
+    // if (rankingList.length != parsedHighscores.length) {
+        for (var i = 0; i < parsedHighscores.length; i++) {
+            var item = document.createElement("li");
+            var name = parsedHighscores[i].name;
+            var score = parsedHighscores[i].score;
+            item.textContent = name + " ----- " + score;
+            if (i % 2 === 0) {
+                item.className = "hs-ranking-odd";
+            }
+            hsRankingsEl.appendChild(item);
         }
-        hsRankingsEl.appendChild(item);
-    }
-
-
-
-    //case for no record check if localStorage has nth maybe .length low%
+    // }
 }
 
-function loadHighscores() {
+function loadHighscores(event) {
     console.log(rankingList);
     var savedhighscores = localStorage.getItem("Highscores");
     console.log(savedhighscores);

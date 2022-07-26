@@ -136,12 +136,15 @@ header {
     justify-content: center;
     align-items: center;
 }
-
+.high-scores h1{
+    margin-right: 33px;
+}
 .hs-rankings {
     text-align: left;
     width: 250px;
     list-style: none;
     counter-reset: li;
+    margin-right: 15px;
 }
 
 .hs-rankings li::before {
@@ -166,6 +169,7 @@ header {
 
 .hs-buttons {
     display: flex;
+    margin-left: 12px;
 }
 
 .hs-btn {
