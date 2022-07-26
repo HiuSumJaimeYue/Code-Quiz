@@ -1,17 +1,20 @@
+//Starting Page
 var headerEl = document.querySelector("#header");
 var timerEl = document.querySelector("#timer");
 var mainEl = document.querySelector("#quiz");
 var frontPageEl = document.querySelector("#front-page");
-var titleEl = document.querySelector("#title-question");
-var questionEl = document.querySelector("#question");
+var titleEl = document.querySelector("#title");
 var guideEl = document.querySelector("#guide");
 var startBtnEl = document.querySelector("#start-btn");
 var viewHSbtnEl = document.querySelector("#viewHSbtn");
 
+//Question Page
 var questionPageEl = document.querySelector("#question-page");
+var questionEl = document.querySelector("#question");
 var optionEl = document.querySelector("#choice-list");
 var decisionEl = document.querySelector("#decision");
 
+//Done/Finish Page
 var donePageEl = document.querySelector("#done-page");
 var doneEl = document.querySelector("#done");
 var finalScoreEl = document.querySelector("#final-score");
@@ -19,7 +22,7 @@ var endEl = document.querySelector("#form-container");
 var nameFormEl = document.querySelector("#name-form");
 var nameInputEl = document.querySelector("#name");
 
-//highscores
+//Highscores Page
 var highscoreEl = document.querySelector("#highscores");
 var hsRankingsEl = document.querySelector("#rankings");
 var clearHSbtnEl = document.querySelector("#clear-hs-btn");
@@ -30,7 +33,7 @@ var currentQuestionNum = 0;
 //ranking list
 var rankingList = [];
 
-//Create HashMap
+//Questions contents
 var question = ["Commonly used data types DO NOT Include:",
     "The condition in an if/else statement is enclosed with ___.",
     "Arrays in Javascript can be used to store ___.",
@@ -38,7 +41,6 @@ var question = ["Commonly used data types DO NOT Include:",
     "A very useful tool used during development and debugging for printing content to the debugger is: "
 ];
 
-//need to change to array of strings
 var answer = ["alerts", "parenthesis", "all of the above", "quotes", "console.log"];
 
 var options = [["strings", "booleans", "alerts", "numbers"],
@@ -64,6 +66,7 @@ function minusTime() {
     timerEl.textContent = "Time: " + time;
 }
 
+//Question Page
 function beginQuestion() {
     changeQuestion(0);
     mainEl.className = "quiz-content-2";
@@ -130,6 +133,7 @@ function decisionAndNext() {
 
 }
 
+//Done/Finish Page
 //Ran out off time, cannot finish the quiz
 //Or finished quiz
 function doneQuestions() {
@@ -149,8 +153,6 @@ function doneQuestions() {
     questionEl.innerHTML = "";
     optionEl.innerHTML = "";
     finalScoreEl.style.display = 'block';
-    //save time -> score before clearing
-
 
     finalScoreEl.textContent = "Your final score is " + time + ".";
     endEl.style.display = 'flex';
@@ -181,6 +183,7 @@ function formSubmit(event) {
     showHighscores();
 }
 
+//Highscores Page
 function showHighscores() {
     //clear out everything
     headerEl.style.display = 'none';
