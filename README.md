@@ -16,14 +16,14 @@ Github repository: https://github.com/HiuSumJaimeYue/Code-Quiz
 
 Screenshots:     
 Starting Page
-![Code Quiz Preview 1](website of screenshots "Code Quiz Preview 1")           
+![Code Quiz Preview 1](https://github.com/HiuSumJaimeYue/Code-Quiz/blob/feature/timer/screenshots/codeQuizPreview1.jpg "Code Quiz Preview 1")           
 Question Page
-![Code Quiz Preview 2](website of screenshots "Code Quiz Preview 2")      
+![Code Quiz Preview 2](https://github.com/HiuSumJaimeYue/Code-Quiz/blob/feature/timer/screenshots/codeQuizPreview2.jpg "Code Quiz Preview 2")      
 Finish Page after finishing the quiz
-![Code Quiz Preview 3](website of screenshots "Code Quiz Preview 3")      
+![Code Quiz Preview 3](https://github.com/HiuSumJaimeYue/Code-Quiz/blob/feature/timer/screenshots/codeQuizPreview3.jpg "Code Quiz Preview 3")      
 Finish Page when Time is up
-![Code Quiz Preview 4](website of screenshots "Code Quiz Preview 4")      
+![Code Quiz Preview 4](https://github.com/HiuSumJaimeYue/Code-Quiz/blob/feature/timer/screenshots/codeQuizPreview4.jpg "Code Quiz Preview 4")      
 Highscores Page with rankings
-![Code Quiz Preview 5](website of screenshots "Code Quiz Preview 5")      
+![Code Quiz Preview 5](https://github.com/HiuSumJaimeYue/Code-Quiz/blob/feature/timer/screenshots/codeQuizPreview5.jpg "Code Quiz Preview 5")      
 Highscores Page with no rankings or after clear highscores
-![Code Quiz Preview 6](website of screenshots "Code Quiz Preview 6")      
+![Code Quiz Preview 6](https://github.com/HiuSumJaimeYue/Code-Quiz/blob/feature/timer/screenshots/codeQuizPreview6.jpg "Code Quiz Preview 6")      
