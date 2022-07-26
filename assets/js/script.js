@@ -1,4 +1,5 @@
 var headerEl = document.querySelector("#header");
+var timerEl = document.querySelector("#timer");
 var mainEl = document.querySelector("#quiz");
 var frontPageEl = document.querySelector("#front-page");
 var titleEl = document.querySelector("#title-question");
@@ -47,9 +48,25 @@ var options = [["strings", "booleans", "alerts", "numbers"],
 ["JavaScript", "terminal / bash", "for loops", "console.log"]
 ];
 
+//Timer control
+var time = 10;
+var timerControl;
+
+function minusTime(){
+
+    if (time === 0) {
+        clearTimeout(timerControl);
+        alert("Time's Up!");
+    }else{
+    	time--;
+    }
+    timerEl.textContent = "Time: " + time;
+}
+
 function beginQuestion() {
     changeQuestion(0);
     mainEl.className = "quiz-content-2";
+    timerControl = setInterval(minusTime, 1000);
 }
 
 function changeQuestion(questionNum) {
@@ -94,6 +111,8 @@ function decisionAndNext() {
         decisionEl.textContent = "Wrong!";
         //MINUS TIME -10
     }
+    //keep the elements there for the participants 
+    //to see if they are right or wrong
     setTimeout(() => {
         //removes element from DOM
         decisionEl.style.display = 'none';
@@ -109,21 +128,10 @@ function decisionAndNext() {
 
 }
 
-//Timer control
-// setInterval(myTimer, 1000);
-// setInterval(addTime, 1000);
-var time = 0;
-// function myTimer() {
-//   	document.getElementById("demo").innerHTML = time;
-
-// }
-// function addTime(){
-// 	time++;
-// }
-
 //Ran out off time, cannot finish the quiz
+//Or finished quiz
 function doneQuestions() {
-
+    clearTimeout(timerControl);
     doneEl.textContent = "All done!";
     questionEl.innerHTML = "";
     optionEl.innerHTML = "";
@@ -135,12 +143,12 @@ function doneQuestions() {
     endEl.style.display = 'flex';
 }
 
-//get value from input element
+//get value from input element for high scores
 function formSubmit(event) {
     event.preventDefault();
     // console.log(event);
     var nameInput = nameInputEl.value.trim();
-    var timescore = 45;
+    var timescore = time;
     if (!nameInput) {
         nameInput = "No name";
     }
